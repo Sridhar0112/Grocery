@@ -1,0 +1,140 @@
+/* Compact Container Styling for the Confirmation Page */
+.order-confirmation {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.confirmation-title {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.thank-you-message {
+  background-color: #ffeb3b;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  color: #2c6b3f;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary {
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.order-summary h3 {
+  font-size: 1.5rem;
+  color: #2980b9;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 2px solid #2980b9;
+  padding-bottom: 8px;
+}
+
+.summary-detail p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.order-id {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f1f8e9;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #388e3c;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.home-button {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-home {
+  padding: 12px 20px;
+  background-color: #1976d2;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 220px;
+  margin: 0 auto;
+}
+
+.btn-home:hover {
+  background-color: #1565c0;
+  transform: translateY(-3px);
+}
+
+.btn-home:active {
+  transform: translateY(1px);
+}
+
+@media screen and (max-width: 768px) {
+  .order-confirmation {
+    padding: 20px;
+    margin: 20px;
+    max-width: 100%;
+  }
+
+  .confirmation-title {
+    font-size: 1.8rem;
+  }
+
+  .thank-you-message {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .order-summary {
+    padding: 15px;
+  }
+
+  .summary-detail p {
+    font-size: 1rem;
+  }
+
+  .order-id {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+
+  .btn-home {
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 12px 18px;
+  }
+}
+
+/* Additional Styles for Links */
+a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+body{
+}

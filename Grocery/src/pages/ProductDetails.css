@@ -1,0 +1,21 @@
+.product-details {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  .product-details img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .product-details button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #48c6ef;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
