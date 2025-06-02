@@ -13,7 +13,7 @@ import {
   List,
   Clock,
 } from "lucide-react";
-
+import "./ProductListing.css";
 const ProductListing = () => {
   // Existing state
   const [products, setProducts] = useState([]);

@@ -6,7 +6,7 @@ import ProductDetails from "./pages/ProductDetails.jsx";
 import Cart from "./pages/Cart.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import OrderConfirmation from "./pages/OrderConfirmation/OrderConfirmation.jsx";
-import Navbar from "./components/Navbar.jsx";
+import { Navbar } from "./components/Navbar.jsx";
 const App = () => {
   return (
     <Router>
