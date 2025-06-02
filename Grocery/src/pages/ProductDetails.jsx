@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./ProductDetails.css";
@@ -8,13 +8,14 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://10.80.32.120:5000/products`)
+    axios
+      .get(`http://localhost:5000/products`)
       .then((response) => setProduct(response.data))
       .catch((error) => console.error("Error fetching product:", error));
   }, [id]);
 
   if (!product) return <p>Loading...</p>;
-  
+
   return (
     <div className="product-details">
       <img src={product.image} alt={product.name} />

@@ -1,19 +1,20 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect("mongodb://10.80.32.120:27017/grocery-store", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.log("MongoDB connection error:", err));
+mongoose
+  .connect("mongodb://localhost:27017/grocery-store", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log("MongoDB connection error:", err));
 
 // Product Schema
 const ProductSchema = new mongoose.Schema({
@@ -29,7 +30,7 @@ const Product = mongoose.model("Product", ProductSchema);
 const OrderSchema = new mongoose.Schema({
   customerName: String,
   address: String,
-  products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+  products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
   totalAmount: Number,
   orderDate: { type: Date, default: Date.now },
 });
@@ -42,7 +43,7 @@ const CartSchema = new mongoose.Schema({
   price: Number,
   image: String,
   category: String,
-  Quantity:String
+  Quantity: String,
 });
 
 const Cart = mongoose.model("Cart", CartSchema);
@@ -59,7 +60,6 @@ app.get("/products", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 // Update an existing product
 // Update an existing product
@@ -89,9 +89,6 @@ app.put("/products", async (req, res) => {
   }
 });
 
-
-
-
 // Add a new product
 app.post("/products", async (req, res) => {
   try {
@@ -115,13 +112,22 @@ app.post("/products", async (req, res) => {
 app.post("/orders", async (req, res) => {
   try {
     const { customerName, address, products, totalAmount } = req.body;
-    const validProducts = await Product.find({ '_id': { $in: products } });
+    const validProducts = await Product.find({ _id: { $in: products } });
     if (validProducts.length !== products.length) {
-      return res.status(400).json({ message: "Some products are invalid or do not exist." });
+      return res
+        .status(400)
+        .json({ message: "Some products are invalid or do not exist." });
     }
-    const newOrder = new Order({ customerName, address, products, totalAmount });
+    const newOrder = new Order({
+      customerName,
+      address,
+      products,
+      totalAmount,
+    });
     await newOrder.save();
-    res.status(201).json({ message: "Order placed successfully!", order: newOrder });
+    res
+      .status(201)
+      .json({ message: "Order placed successfully!", order: newOrder });
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
@@ -130,13 +136,15 @@ app.post("/orders", async (req, res) => {
 // Add a product to the cart
 app.post("/Cart", async (req, res) => {
   try {
-    const { name, price, image, category,Quantity } = req.body;
+    const { name, price, image, category, Quantity } = req.body;
     if (!name || !price || !image || !category || !Quantity) {
       return res.status(400).json({ message: "All fields are required" });
     }
     const existingCartItem = await Cart.findOne({ name });
     if (existingCartItem) {
-      return res.status(400).json({ message: "Product already exists in the cart!" });
+      return res
+        .status(400)
+        .json({ message: "Product already exists in the cart!" });
     }
     const newCartItem = new Cart({ name, price, image, category, Quantity });
     await newCartItem.save();
@@ -173,20 +181,19 @@ app.delete("/Cart", async (req, res) => {
       return res.status(404).json({ message: "Product not found in the cart" });
     }
 
-    res.status(200).json({ message: "Product deleted successfully", product: deletedProduct });
+    res.status(200).json({
+      message: "Product deleted successfully",
+      product: deletedProduct,
+    });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 
-
-
-
-
 // Delete a product by its ID (passed in the request body)
 app.delete("/products", async (req, res) => {
   try {
-    const { id } = req.body;  // Extract the product ID from the request body
+    const { id } = req.body; // Extract the product ID from the request body
 
     if (!id) {
       return res.status(400).json({ message: "Product ID is required" });
@@ -197,22 +204,16 @@ app.delete("/products", async (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    await Product.findByIdAndDelete(id);  // Delete the product by ID
+    await Product.findByIdAndDelete(id); // Delete the product by ID
     res.status(200).json({ message: "Product deleted successfully", product });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 
-
-
-
-
-
-
-
 // Start the server
 const PORT = 5000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://10.80.32.120:${PORT}`);
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
