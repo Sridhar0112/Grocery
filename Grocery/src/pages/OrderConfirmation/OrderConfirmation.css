@@ -1,140 +1,94 @@
-/* Compact Container Styling for the Confirmation Page */
-.order-confirmation {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 25px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-  color: #333;
-}
+/* OrderConfirmation.css */
 
-.confirmation-title {
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at center, #ffffff, #f0f4f8);
+  padding: 2rem;
+  box-sizing: border-box;
   text-align: center;
-  color: #2c3e50;
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-.thank-you-message {
-  background-color: #ffeb3b;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 1rem;
-  color: #2c6b3f;
-  font-weight: bold;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+.loading-wrapper {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  animation: slideUp 0.7s ease-in-out;
 }
 
-.order-summary {
-  background-color: #fafafa;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+/* Spinner Styles */
+.loading-spinner {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  border: 6px solid #d1d5db;
+  border-top: 6px solid #6366f1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.5);
 }
 
-.order-summary h3 {
+/* Text Styling */
+.loading-text {
   font-size: 1.5rem;
-  color: #2980b9;
-  text-transform: uppercase;
   font-weight: 600;
-  border-bottom: 2px solid #2980b9;
-  padding-bottom: 8px;
+  color: #111827;
+  margin-bottom: 0.5rem;
 }
 
-.summary-detail p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin: 10px 0;
+.loading-subtext {
+  font-size: 1rem;
+  color: #6b7280;
 }
 
-.order-id {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f1f8e9;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #388e3c;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.home-button {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.btn-home {
-  padding: 12px 20px;
-  background-color: #1976d2;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 220px;
-  margin: 0 auto;
-}
-
-.btn-home:hover {
-  background-color: #1565c0;
-  transform: translateY(-3px);
-}
-
-.btn-home:active {
-  transform: translateY(1px);
-}
-
-@media screen and (max-width: 768px) {
-  .order-confirmation {
-    padding: 20px;
-    margin: 20px;
-    max-width: 100%;
-  }
-
-  .confirmation-title {
-    font-size: 1.8rem;
-  }
-
-  .thank-you-message {
-    font-size: 1rem;
-    padding: 15px;
-  }
-
-  .order-summary {
-    padding: 15px;
-  }
-
-  .summary-detail p {
-    font-size: 1rem;
-  }
-
-  .order-id {
-    font-size: 1.1rem;
-    padding: 12px;
-  }
-
-  .btn-home {
-    font-size: 1.1rem;
-    width: 100%;
-    padding: 12px 18px;
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* Additional Styles for Links */
-a {
-  color: #1976d2;
-  text-decoration: none;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-a:hover {
-  text-decoration: underline;
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
-body{
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .loading-wrapper {
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .loading-text {
+    font-size: 1.25rem;
+  }
+
+  .loading-subtext {
+    font-size: 0.95rem;
+  }
 }
